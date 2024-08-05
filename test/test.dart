@@ -22,14 +22,19 @@ void main() {
     test('', () async {
       // given
       final MockDio dio = MockDio();
-      final NetworkService service = NetworkService('path', dio);
+      final NetworkService service = NetworkService('https://api-rest.elice.io', dio);
 
       final Map<String, dynamic> expectedResult = coursesJsonSource['_result'];
       const String keyStatus = 'status';
       const String keyReason = 'reason';
 
       // when
-      when(dio.get('path')).thenAnswer(
+      when(
+        dio.get(
+          '/org/academy/course/list/',
+          queryParameters: {'filter_is_recommended': true, 'offset': 0, 'count': 10},
+        ),
+      ).thenAnswer(
         (_) async => Response(
           data: coursesJsonSource,
           statusCode: 200,
@@ -37,7 +42,8 @@ void main() {
         ),
       );
 
-      final NetworkResponse result = await service.getRequest('path');
+      final NetworkResponse result = await service
+          .getRequest('/org/academy/course/list/', params: {'filter_is_recommended': true, 'offset': 0, 'count': 10});
 
       // then
       expect(
@@ -57,7 +63,7 @@ void main() {
       test('CourseRemoteDataSource fetch Test!', () async {
         // given
         final MockDio dio = MockDio();
-        final NetworkService service = NetworkService('path', dio);
+        final NetworkService service = NetworkService('https://api-rest.elice.io', dio);
         final CourseRemoteDataSource remote = CourseRemoteDataSource(service);
 
         final Map<String, dynamic> expectedData = coursesJsonSource['courses'][0];
@@ -68,7 +74,12 @@ void main() {
 
         // when
         // when
-        when(dio.get('path')).thenAnswer(
+        when(
+          dio.get(
+            '/org/academy/course/list/',
+            queryParameters: {'filter_is_recommended': true, 'offset': 0, 'count': 10},
+          ),
+        ).thenAnswer(
           (_) async => Response(
             data: coursesJsonSource,
             statusCode: 200,
@@ -76,7 +87,8 @@ void main() {
           ),
         );
 
-        final List<Course> result = await remote.fetch();
+        final List<Course> result = await remote
+            .fetch('/org/academy/course/list/', params: {'filter_is_recommended': true, 'offset': 0, 'count': 10});
 
         // then
         expect(

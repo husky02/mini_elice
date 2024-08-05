@@ -7,8 +7,8 @@ class CourseRemoteDataSource {
 
   CourseRemoteDataSource(this.service);
 
-  Future<List<Course>> fetch({Map<String, dynamic>? params}) async {
-    NetworkResponse response = await service.getRequest('path', params: params);
+  Future<List<Course>> fetch(String path, {Map<String, dynamic>? params}) async {
+    NetworkResponse response = await service.getRequest(path, params: params);
     // Todo: Need List<Course>
     return [
       const Course(
