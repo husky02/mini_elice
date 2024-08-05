@@ -8,7 +8,7 @@ class NetworkService {
   const NetworkService(this.baseUrl, this.dio);
 
   Future<NetworkResponse> getRequest(String path, {Map<String, dynamic>? params}) async {
-    Response response = await dio.request(path, queryParameters: params);
+    Response response = await dio.get(path, queryParameters: params);
     // Todo: Need transform NetworkResponse()
     return NetworkResponse(status: 'ok', statusCode: 0, data: null);
   }

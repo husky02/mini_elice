@@ -7,8 +7,8 @@ part 'course_model.g.dart';
 @freezed
 sealed class Course with _$Course {
   const factory Course({
-    @Default('') required String title,
-    @JsonKey(name: 'short_description') @Default('') required String shortDescription,
+    @Default('') String title,
+    @JsonKey(name: 'short_description') @Default('') String shortDescription,
     @JsonKey(name: 'image_file_url') @Default('') String imageFileUrl,
     @JsonKey(name: 'logo_file_url') @Default('') String logFileUrl,
     @JsonKey(name: 'taglist') @Default([]) List<String> tagList,

@@ -17,9 +17,10 @@ void main() {
       ModularApp(
         module: AppModule(),
         child: EasyLocalization(
-            supportedLocales: [Locale(LocaleType.kor.value, LocaleType.kor.value)],
-            path: localeAssetPath,
-            child: const AppWidget(),),
+          supportedLocales: [Locale(LocaleType.kor.value, LocaleType.kor.value)],
+          path: localeAssetPath,
+          child: const AppWidget(),
+        ),
       ),
     );
   }, (error, stacktrace) {
