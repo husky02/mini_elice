@@ -152,8 +152,8 @@ class __$$CourseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CourseImpl implements _Course {
-  _$CourseImpl(
-      {this.title = '',
+  const _$CourseImpl(
+      {required this.title = '',
       @JsonKey(name: 'short_description') this.shortDescription = '',
       @JsonKey(name: 'image_file_url') this.imageFileUrl = '',
       @JsonKey(name: 'logo_file_url') this.logFileUrl = '',
@@ -224,9 +224,10 @@ class _$CourseImpl implements _Course {
 }
 
 abstract class _Course implements Course {
-  factory _Course(
-      {final String title,
-      @JsonKey(name: 'short_description') final String shortDescription,
+  const factory _Course(
+      {required final String title,
+      @JsonKey(name: 'short_description')
+      required final String shortDescription,
       @JsonKey(name: 'image_file_url') final String imageFileUrl,
       @JsonKey(name: 'logo_file_url') final String logFileUrl,
       @JsonKey(name: 'taglist') final List<String> tagList}) = _$CourseImpl;
