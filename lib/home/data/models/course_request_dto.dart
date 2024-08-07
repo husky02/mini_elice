@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'course_request_dto.freezed.dart';
+part 'course_request_dto.g.dart';
 
 @freezed
 sealed class CourseRequestDto with _$CourseRequestDto {
@@ -10,5 +11,5 @@ sealed class CourseRequestDto with _$CourseRequestDto {
     @JsonKey(name: 'filter_is_recommended') @Default(false) bool recommend,
   }) = _CourseRequestDto;
 
-  factory CourseRequestDto.fromJson(Map<String, dynamic> json) => _$CourseRequestDtoFromJson(json);
+  factory CourseRequestDto.fromJson(Map<String, Object?> json) => _$CourseRequestDtoFromJson(json);
 }

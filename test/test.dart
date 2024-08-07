@@ -22,7 +22,7 @@ void main() {
     test('', () async {
       // given
       final MockDio dio = MockDio();
-      final NetworkService service = NetworkService('https://api-rest.elice.io', dio);
+      final NetworkService service = NetworkService(dio);
 
       final Map<String, dynamic> expectedResult = coursesJsonSource['_result'];
       const String keyStatus = 'status';
@@ -63,7 +63,7 @@ void main() {
       test('CourseRemoteDataSource fetch Test!', () async {
         // given
         final MockDio dio = MockDio();
-        final NetworkService service = NetworkService('https://api-rest.elice.io', dio);
+        final NetworkService service = NetworkService(dio);
         final CourseRemoteDataSource remote = CourseRemoteDataSource(service);
 
         final Map<String, dynamic> expectedData = coursesJsonSource['courses'][0];
@@ -96,7 +96,7 @@ void main() {
           same(expectedData[keyTitle] ?? ''),
         );
         expect(
-          result[0].logFileUrl,
+          result[0].logoFileUrl,
           same(expectedData[keyLogFileUrl] ?? ''),
         );
         expect(
