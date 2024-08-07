@@ -19,21 +19,21 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool recommend) fetch,
+    required TResult Function(CourseSectionEnum section) fetch,
     required TResult Function(CourseEntity entity) sectionItemClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool recommend)? fetch,
+    TResult? Function(CourseSectionEnum section)? fetch,
     TResult? Function(CourseEntity entity)? sectionItemClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool recommend)? fetch,
+    TResult Function(CourseSectionEnum section)? fetch,
     TResult Function(CourseEntity entity)? sectionItemClicked,
     required TResult orElse(),
   }) =>
@@ -118,7 +118,7 @@ class _$initialImpl implements _initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool recommend) fetch,
+    required TResult Function(CourseSectionEnum section) fetch,
     required TResult Function(CourseEntity entity) sectionItemClicked,
   }) {
     return initial();
@@ -128,7 +128,7 @@ class _$initialImpl implements _initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool recommend)? fetch,
+    TResult? Function(CourseSectionEnum section)? fetch,
     TResult? Function(CourseEntity entity)? sectionItemClicked,
   }) {
     return initial?.call();
@@ -138,7 +138,7 @@ class _$initialImpl implements _initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool recommend)? fetch,
+    TResult Function(CourseSectionEnum section)? fetch,
     TResult Function(CourseEntity entity)? sectionItemClicked,
     required TResult orElse(),
   }) {
@@ -193,7 +193,7 @@ abstract class _$$CourseFetchImplCopyWith<$Res> {
           _$CourseFetchImpl value, $Res Function(_$CourseFetchImpl) then) =
       __$$CourseFetchImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({bool recommend});
+  $Res call({CourseSectionEnum section});
 }
 
 /// @nodoc
@@ -207,13 +207,13 @@ class __$$CourseFetchImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? recommend = null,
+    Object? section = null,
   }) {
     return _then(_$CourseFetchImpl(
-      recommend: null == recommend
-          ? _value.recommend
-          : recommend // ignore: cast_nullable_to_non_nullable
-              as bool,
+      section: null == section
+          ? _value.section
+          : section // ignore: cast_nullable_to_non_nullable
+              as CourseSectionEnum,
     ));
   }
 }
@@ -221,15 +221,15 @@ class __$$CourseFetchImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CourseFetchImpl implements CourseFetch {
-  _$CourseFetchImpl({this.recommend = false});
+  _$CourseFetchImpl({this.section = CourseSectionEnum.free});
 
   @override
   @JsonKey()
-  final bool recommend;
+  final CourseSectionEnum section;
 
   @override
   String toString() {
-    return 'HomeEvent.fetch(recommend: $recommend)';
+    return 'HomeEvent.fetch(section: $section)';
   }
 
   @override
@@ -237,12 +237,11 @@ class _$CourseFetchImpl implements CourseFetch {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CourseFetchImpl &&
-            (identical(other.recommend, recommend) ||
-                other.recommend == recommend));
+            (identical(other.section, section) || other.section == section));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, recommend);
+  int get hashCode => Object.hash(runtimeType, section);
 
   @JsonKey(ignore: true)
   @override
@@ -254,32 +253,32 @@ class _$CourseFetchImpl implements CourseFetch {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool recommend) fetch,
+    required TResult Function(CourseSectionEnum section) fetch,
     required TResult Function(CourseEntity entity) sectionItemClicked,
   }) {
-    return fetch(recommend);
+    return fetch(section);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool recommend)? fetch,
+    TResult? Function(CourseSectionEnum section)? fetch,
     TResult? Function(CourseEntity entity)? sectionItemClicked,
   }) {
-    return fetch?.call(recommend);
+    return fetch?.call(section);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool recommend)? fetch,
+    TResult Function(CourseSectionEnum section)? fetch,
     TResult Function(CourseEntity entity)? sectionItemClicked,
     required TResult orElse(),
   }) {
     if (fetch != null) {
-      return fetch(recommend);
+      return fetch(section);
     }
     return orElse();
   }
@@ -320,9 +319,9 @@ class _$CourseFetchImpl implements CourseFetch {
 }
 
 abstract class CourseFetch implements HomeEvent {
-  factory CourseFetch({final bool recommend}) = _$CourseFetchImpl;
+  factory CourseFetch({final CourseSectionEnum section}) = _$CourseFetchImpl;
 
-  bool get recommend;
+  CourseSectionEnum get section;
   @JsonKey(ignore: true)
   _$$CourseFetchImplCopyWith<_$CourseFetchImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -404,7 +403,7 @@ class _$SectionItemClickedImpl implements SectionItemClicked {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool recommend) fetch,
+    required TResult Function(CourseSectionEnum section) fetch,
     required TResult Function(CourseEntity entity) sectionItemClicked,
   }) {
     return sectionItemClicked(entity);
@@ -414,7 +413,7 @@ class _$SectionItemClickedImpl implements SectionItemClicked {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool recommend)? fetch,
+    TResult? Function(CourseSectionEnum section)? fetch,
     TResult? Function(CourseEntity entity)? sectionItemClicked,
   }) {
     return sectionItemClicked?.call(entity);
@@ -424,7 +423,7 @@ class _$SectionItemClickedImpl implements SectionItemClicked {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool recommend)? fetch,
+    TResult Function(CourseSectionEnum section)? fetch,
     TResult Function(CourseEntity entity)? sectionItemClicked,
     required TResult orElse(),
   }) {

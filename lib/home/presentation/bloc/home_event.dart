@@ -4,7 +4,7 @@ part of 'home_bloc.dart';
 class HomeEvent with _$HomeEvent {
   factory HomeEvent.initial() = _initial;
 
-  factory HomeEvent.fetch({@Default(false) bool recommend}) = CourseFetch;
+  factory HomeEvent.fetch({@Default(CourseSectionEnum.free) CourseSectionEnum section}) = CourseFetch;
 
   factory HomeEvent.sectionItemClicked(CourseEntity entity) = SectionItemClicked;
 }

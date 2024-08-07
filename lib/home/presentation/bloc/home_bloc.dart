@@ -4,9 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mini_elice/home/domain/entities/course_entity.dart';
 import 'package:mini_elice/home/domain/repositories/course_repository.dart';
+import 'package:mini_elice/home/presentation/course_section_enum.dart';
 
 part 'home_bloc.freezed.dart';
+
 part 'home_event.dart';
+
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
@@ -17,7 +20,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   Future<void> fetch(CourseFetch event, Emitter<HomeState> emit) async {
-    if (event.recommend) {
+    if (event.section == CourseSectionEnum.recommend) {
       await _recommendCourseFetch(event, emit);
     } else {
       await _courseFetch(event, emit);
@@ -40,8 +43,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     List<CourseEntity> currentEntities = [];
     currentEntities.addAll(currentState.entities);
     final int offset = currentState.entities.length;
-    final List<CourseEntity> entities =
-        await repository.readCourses(recommend: event.recommend, offset: offset, fetchCount: 10);
+
+    final List<CourseEntity> entities = await repository.readCourses(recommend: false, offset: offset, fetchCount: 10);
 
     currentEntities.addAll(entities);
 
@@ -51,14 +54,23 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   FutureOr<void> _recommendCourseFetch(CourseFetch event, Emitter<HomeState> emit) async {
-    final RecommendCourseLoadedState? currentState = state.mapOrNull(recommendCourseLoaded: (state) => state);
+    RecommendCourseLoadedState? currentState;
 
-    if (currentState == null || currentState.entities.isEmpty) {
-      return;
+    if (state is HomeStateInitial) {
+      currentState = RecommendCourseLoadedState(entities: []);
+    } else {
+      currentState = state.mapOrNull(recommendCourseLoaded: (state) => state);
+
+      if (currentState == null || currentState.entities.isEmpty) {
+        return;
+      }
     }
-    final List<CourseEntity> currentEntities = currentState.entities;
-    final int offset = currentEntities.length;
-    final List<CourseEntity> entities = await repository.readCourses(recommend: event.recommend, offset: offset);
+
+    List<CourseEntity> currentEntities = [];
+    currentEntities.addAll(currentState.entities);
+    final int offset = currentState.entities.length;
+
+    final List<CourseEntity> entities = await repository.readCourses(recommend: true, offset: offset, fetchCount: 10);
 
     currentEntities.addAll(entities);
 
