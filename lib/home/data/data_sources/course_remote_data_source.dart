@@ -12,12 +12,14 @@ class CourseRemoteDataSource {
     debugPrint('[Paul] path: $path, params: $params');
 
     NetworkResponse response = await service.getRequest(path, params: params);
-    String? status = response.data?['_result'];
+    String? status = response.data?['_result']['status'];
 
     if (status == 'ok') {
-      final List<Map<String, dynamic>> courses = response.data?['courses'] as List<Map<String, dynamic>>;
+      final List<dynamic> courses = response.data?['courses'] as List<dynamic>;
       return courses.fold(<Course>[], (value, e) async {
-        (await value).add(Course.fromJson(e));
+        if (e is Map<String, dynamic>) {
+          (await value).add(Course.fromJson(e));
+        }
         return value;
       });
     } else {

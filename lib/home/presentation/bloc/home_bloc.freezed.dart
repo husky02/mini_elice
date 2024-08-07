@@ -506,7 +506,7 @@ mixin _$HomeState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HomeStateInitial value) initial,
+    required TResult Function(HomeStateInitial value) initial,
     required TResult Function(CourseLoadedState value) courseLoaded,
     required TResult Function(RecommendCourseLoadedState value)
         recommendCourseLoaded,
@@ -514,14 +514,14 @@ mixin _$HomeState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_HomeStateInitial value)? initial,
+    TResult? Function(HomeStateInitial value)? initial,
     TResult? Function(CourseLoadedState value)? courseLoaded,
     TResult? Function(RecommendCourseLoadedState value)? recommendCourseLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HomeStateInitial value)? initial,
+    TResult Function(HomeStateInitial value)? initial,
     TResult Function(CourseLoadedState value)? courseLoaded,
     TResult Function(RecommendCourseLoadedState value)? recommendCourseLoaded,
     required TResult orElse(),
@@ -564,7 +564,7 @@ class __$$HomeStateInitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$HomeStateInitialImpl implements _HomeStateInitial {
+class _$HomeStateInitialImpl implements HomeStateInitial {
   _$HomeStateInitialImpl();
 
   @override
@@ -619,7 +619,7 @@ class _$HomeStateInitialImpl implements _HomeStateInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HomeStateInitial value) initial,
+    required TResult Function(HomeStateInitial value) initial,
     required TResult Function(CourseLoadedState value) courseLoaded,
     required TResult Function(RecommendCourseLoadedState value)
         recommendCourseLoaded,
@@ -630,7 +630,7 @@ class _$HomeStateInitialImpl implements _HomeStateInitial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_HomeStateInitial value)? initial,
+    TResult? Function(HomeStateInitial value)? initial,
     TResult? Function(CourseLoadedState value)? courseLoaded,
     TResult? Function(RecommendCourseLoadedState value)? recommendCourseLoaded,
   }) {
@@ -640,7 +640,7 @@ class _$HomeStateInitialImpl implements _HomeStateInitial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HomeStateInitial value)? initial,
+    TResult Function(HomeStateInitial value)? initial,
     TResult Function(CourseLoadedState value)? courseLoaded,
     TResult Function(RecommendCourseLoadedState value)? recommendCourseLoaded,
     required TResult orElse(),
@@ -652,8 +652,8 @@ class _$HomeStateInitialImpl implements _HomeStateInitial {
   }
 }
 
-abstract class _HomeStateInitial implements HomeState {
-  factory _HomeStateInitial() = _$HomeStateInitialImpl;
+abstract class HomeStateInitial implements HomeState {
+  factory HomeStateInitial() = _$HomeStateInitialImpl;
 }
 
 /// @nodoc
@@ -764,7 +764,7 @@ class _$CourseLoadedStateImpl implements CourseLoadedState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HomeStateInitial value) initial,
+    required TResult Function(HomeStateInitial value) initial,
     required TResult Function(CourseLoadedState value) courseLoaded,
     required TResult Function(RecommendCourseLoadedState value)
         recommendCourseLoaded,
@@ -775,7 +775,7 @@ class _$CourseLoadedStateImpl implements CourseLoadedState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_HomeStateInitial value)? initial,
+    TResult? Function(HomeStateInitial value)? initial,
     TResult? Function(CourseLoadedState value)? courseLoaded,
     TResult? Function(RecommendCourseLoadedState value)? recommendCourseLoaded,
   }) {
@@ -785,7 +785,7 @@ class _$CourseLoadedStateImpl implements CourseLoadedState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HomeStateInitial value)? initial,
+    TResult Function(HomeStateInitial value)? initial,
     TResult Function(CourseLoadedState value)? courseLoaded,
     TResult Function(RecommendCourseLoadedState value)? recommendCourseLoaded,
     required TResult orElse(),
@@ -918,7 +918,7 @@ class _$RecommendCourseLoadedStateImpl implements RecommendCourseLoadedState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HomeStateInitial value) initial,
+    required TResult Function(HomeStateInitial value) initial,
     required TResult Function(CourseLoadedState value) courseLoaded,
     required TResult Function(RecommendCourseLoadedState value)
         recommendCourseLoaded,
@@ -929,7 +929,7 @@ class _$RecommendCourseLoadedStateImpl implements RecommendCourseLoadedState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_HomeStateInitial value)? initial,
+    TResult? Function(HomeStateInitial value)? initial,
     TResult? Function(CourseLoadedState value)? courseLoaded,
     TResult? Function(RecommendCourseLoadedState value)? recommendCourseLoaded,
   }) {
@@ -939,7 +939,7 @@ class _$RecommendCourseLoadedStateImpl implements RecommendCourseLoadedState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HomeStateInitial value)? initial,
+    TResult Function(HomeStateInitial value)? initial,
     TResult Function(CourseLoadedState value)? courseLoaded,
     TResult Function(RecommendCourseLoadedState value)? recommendCourseLoaded,
     required TResult orElse(),

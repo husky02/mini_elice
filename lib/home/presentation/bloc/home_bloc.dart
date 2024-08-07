@@ -16,24 +16,32 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<CourseFetch>(fetch);
   }
 
-  FutureOr<void> fetch(CourseFetch event, Emitter<HomeState> emit) async {
+  Future<void> fetch(CourseFetch event, Emitter<HomeState> emit) async {
     if (event.recommend) {
-      _recommendCourseFetch(event, emit);
+      await _recommendCourseFetch(event, emit);
     } else {
-      _courseFetch(event, emit);
+      await _courseFetch(event, emit);
     }
   }
 
   FutureOr<void> _courseFetch(CourseFetch event, Emitter<HomeState> emit) async {
-    final CourseLoadedState? currentState = state.mapOrNull(courseLoaded: (state) => state);
+    CourseLoadedState? currentState;
 
-    if (currentState == null || currentState.entities.isEmpty) {
-      return;
+    if (state is HomeStateInitial) {
+      currentState = CourseLoadedState(entities: []);
+    } else {
+      currentState = state.mapOrNull(courseLoaded: (state) => state);
+
+      if (currentState == null || currentState.entities.isEmpty) {
+        return;
+      }
     }
 
-    final List<CourseEntity> currentEntities = currentState.entities;
-    final int offset = currentEntities.length;
-    final List<CourseEntity> entities = await repository.readCourses(recommend: event.recommend, offset: offset);
+    List<CourseEntity> currentEntities = [];
+    currentEntities.addAll(currentState.entities);
+    final int offset = currentState.entities.length;
+    final List<CourseEntity> entities =
+        await repository.readCourses(recommend: event.recommend, offset: offset, fetchCount: 10);
 
     currentEntities.addAll(entities);
 

@@ -14,3 +14,21 @@ class CourseEntity with _$CourseEntity {
     @Default([]) List<String> tagList,
   }) = _CourseEntity;
 }
+
+extension CourseEntityEx on CourseEntity {
+  bool get useLogo {
+    return imageFileUrl.isEmpty;
+  }
+
+  String get imageUrl {
+    return useLogo ? logoFileUrl : imageFileUrl;
+  }
+
+  double get imageWidth {
+    return useLogo ? 56.0 : 200.0;
+  }
+
+  double get imageHeight {
+    return useLogo ? 56.0 : 200.0;
+  }
+}

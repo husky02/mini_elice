@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mini_elice/home/presentation/bloc/home_bloc.dart';
+import 'package:mini_elice/home/presentation/widgets/course_infinite_scroll_widget.dart';
 import 'package:mini_elice/home/presentation/widgets/home_top_bar_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,10 +10,22 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const HomeTopBarWidget(),
-      body: BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
-
-        return const SizedBox();
-      }),
+      body: SingleChildScrollView(
+        child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0, top: 16.0),
+            child: SizedBox(
+              child: Text(
+                "section_free".tr(),
+                style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.w700, color: Colors.black),
+              ),
+            ),
+          ),
+          const CourseInfiniteScrollWidget(),
+          // CourseInfiniteScrollWidget(),
+          // CourseInfiniteScrollWidget(),
+        ]),
+      ),
     );
   }
 }

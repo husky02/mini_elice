@@ -14,11 +14,15 @@ import 'package:flutter/services.dart';
 class $AssetsPngGen {
   const $AssetsPngGen();
 
+  /// File path: assets/png/logo_file_url.png
+  AssetGenImage get logoFileUrl =>
+      const AssetGenImage('assets/png/logo_file_url.png');
+
   /// File path: assets/png/logo_img.png
   AssetGenImage get logoImg => const AssetGenImage('assets/png/logo_img.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [logoImg];
+  List<AssetGenImage> get values => [logoFileUrl, logoImg];
 }
 
 class $AssetsSvgGen {
