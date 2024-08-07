@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'course_model.dart';
+part of 'course.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -21,12 +21,13 @@ Course _$CourseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Course {
   String get title => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'short_description')
   String get shortDescription => throw _privateConstructorUsedError;
   @JsonKey(name: 'image_file_url')
   String get imageFileUrl => throw _privateConstructorUsedError;
   @JsonKey(name: 'logo_file_url')
-  String get logFileUrl => throw _privateConstructorUsedError;
+  String get logoFileUrl => throw _privateConstructorUsedError;
   @JsonKey(name: 'taglist')
   List<String> get tagList => throw _privateConstructorUsedError;
 
@@ -42,9 +43,10 @@ abstract class $CourseCopyWith<$Res> {
   @useResult
   $Res call(
       {String title,
+      int id,
       @JsonKey(name: 'short_description') String shortDescription,
       @JsonKey(name: 'image_file_url') String imageFileUrl,
-      @JsonKey(name: 'logo_file_url') String logFileUrl,
+      @JsonKey(name: 'logo_file_url') String logoFileUrl,
       @JsonKey(name: 'taglist') List<String> tagList});
 }
 
@@ -62,9 +64,10 @@ class _$CourseCopyWithImpl<$Res, $Val extends Course>
   @override
   $Res call({
     Object? title = null,
+    Object? id = null,
     Object? shortDescription = null,
     Object? imageFileUrl = null,
-    Object? logFileUrl = null,
+    Object? logoFileUrl = null,
     Object? tagList = null,
   }) {
     return _then(_value.copyWith(
@@ -72,6 +75,10 @@ class _$CourseCopyWithImpl<$Res, $Val extends Course>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       shortDescription: null == shortDescription
           ? _value.shortDescription
           : shortDescription // ignore: cast_nullable_to_non_nullable
@@ -80,9 +87,9 @@ class _$CourseCopyWithImpl<$Res, $Val extends Course>
           ? _value.imageFileUrl
           : imageFileUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      logFileUrl: null == logFileUrl
-          ? _value.logFileUrl
-          : logFileUrl // ignore: cast_nullable_to_non_nullable
+      logoFileUrl: null == logoFileUrl
+          ? _value.logoFileUrl
+          : logoFileUrl // ignore: cast_nullable_to_non_nullable
               as String,
       tagList: null == tagList
           ? _value.tagList
@@ -101,9 +108,10 @@ abstract class _$$CourseImplCopyWith<$Res> implements $CourseCopyWith<$Res> {
   @useResult
   $Res call(
       {String title,
+      int id,
       @JsonKey(name: 'short_description') String shortDescription,
       @JsonKey(name: 'image_file_url') String imageFileUrl,
-      @JsonKey(name: 'logo_file_url') String logFileUrl,
+      @JsonKey(name: 'logo_file_url') String logoFileUrl,
       @JsonKey(name: 'taglist') List<String> tagList});
 }
 
@@ -119,9 +127,10 @@ class __$$CourseImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
+    Object? id = null,
     Object? shortDescription = null,
     Object? imageFileUrl = null,
-    Object? logFileUrl = null,
+    Object? logoFileUrl = null,
     Object? tagList = null,
   }) {
     return _then(_$CourseImpl(
@@ -129,6 +138,10 @@ class __$$CourseImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       shortDescription: null == shortDescription
           ? _value.shortDescription
           : shortDescription // ignore: cast_nullable_to_non_nullable
@@ -137,9 +150,9 @@ class __$$CourseImplCopyWithImpl<$Res>
           ? _value.imageFileUrl
           : imageFileUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      logFileUrl: null == logFileUrl
-          ? _value.logFileUrl
-          : logFileUrl // ignore: cast_nullable_to_non_nullable
+      logoFileUrl: null == logoFileUrl
+          ? _value.logoFileUrl
+          : logoFileUrl // ignore: cast_nullable_to_non_nullable
               as String,
       tagList: null == tagList
           ? _value._tagList
@@ -154,9 +167,10 @@ class __$$CourseImplCopyWithImpl<$Res>
 class _$CourseImpl implements _Course {
   const _$CourseImpl(
       {this.title = '',
+      this.id = 0,
       @JsonKey(name: 'short_description') this.shortDescription = '',
       @JsonKey(name: 'image_file_url') this.imageFileUrl = '',
-      @JsonKey(name: 'logo_file_url') this.logFileUrl = '',
+      @JsonKey(name: 'logo_file_url') this.logoFileUrl = '',
       @JsonKey(name: 'taglist') final List<String> tagList = const []})
       : _tagList = tagList;
 
@@ -167,6 +181,9 @@ class _$CourseImpl implements _Course {
   @JsonKey()
   final String title;
   @override
+  @JsonKey()
+  final int id;
+  @override
   @JsonKey(name: 'short_description')
   final String shortDescription;
   @override
@@ -174,7 +191,7 @@ class _$CourseImpl implements _Course {
   final String imageFileUrl;
   @override
   @JsonKey(name: 'logo_file_url')
-  final String logFileUrl;
+  final String logoFileUrl;
   final List<String> _tagList;
   @override
   @JsonKey(name: 'taglist')
@@ -186,7 +203,7 @@ class _$CourseImpl implements _Course {
 
   @override
   String toString() {
-    return 'Course(title: $title, shortDescription: $shortDescription, imageFileUrl: $imageFileUrl, logFileUrl: $logFileUrl, tagList: $tagList)';
+    return 'Course(title: $title, id: $id, shortDescription: $shortDescription, imageFileUrl: $imageFileUrl, logoFileUrl: $logoFileUrl, tagList: $tagList)';
   }
 
   @override
@@ -195,19 +212,20 @@ class _$CourseImpl implements _Course {
         (other.runtimeType == runtimeType &&
             other is _$CourseImpl &&
             (identical(other.title, title) || other.title == title) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.shortDescription, shortDescription) ||
                 other.shortDescription == shortDescription) &&
             (identical(other.imageFileUrl, imageFileUrl) ||
                 other.imageFileUrl == imageFileUrl) &&
-            (identical(other.logFileUrl, logFileUrl) ||
-                other.logFileUrl == logFileUrl) &&
+            (identical(other.logoFileUrl, logoFileUrl) ||
+                other.logoFileUrl == logoFileUrl) &&
             const DeepCollectionEquality().equals(other._tagList, _tagList));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, shortDescription,
-      imageFileUrl, logFileUrl, const DeepCollectionEquality().hash(_tagList));
+  int get hashCode => Object.hash(runtimeType, title, id, shortDescription,
+      imageFileUrl, logoFileUrl, const DeepCollectionEquality().hash(_tagList));
 
   @JsonKey(ignore: true)
   @override
@@ -226,15 +244,18 @@ class _$CourseImpl implements _Course {
 abstract class _Course implements Course {
   const factory _Course(
       {final String title,
+      final int id,
       @JsonKey(name: 'short_description') final String shortDescription,
       @JsonKey(name: 'image_file_url') final String imageFileUrl,
-      @JsonKey(name: 'logo_file_url') final String logFileUrl,
+      @JsonKey(name: 'logo_file_url') final String logoFileUrl,
       @JsonKey(name: 'taglist') final List<String> tagList}) = _$CourseImpl;
 
   factory _Course.fromJson(Map<String, dynamic> json) = _$CourseImpl.fromJson;
 
   @override
   String get title;
+  @override
+  int get id;
   @override
   @JsonKey(name: 'short_description')
   String get shortDescription;
@@ -243,7 +264,7 @@ abstract class _Course implements Course {
   String get imageFileUrl;
   @override
   @JsonKey(name: 'logo_file_url')
-  String get logFileUrl;
+  String get logoFileUrl;
   @override
   @JsonKey(name: 'taglist')
   List<String> get tagList;

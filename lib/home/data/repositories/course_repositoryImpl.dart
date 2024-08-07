@@ -1,11 +1,10 @@
 import 'package:mini_elice/home/data/data_sources/course_remote_data_source.dart';
-import 'package:mini_elice/home/data/models/course_model.dart';
+import 'package:mini_elice/home/data/models/course.dart';
+import 'package:mini_elice/home/data/models/course_request_dto.dart';
+import 'package:mini_elice/home/domain/entities/course_entity.dart';
 import 'package:mini_elice/home/domain/repositories/course_repository.dart';
 
 const String readCoursesPath = '/org/academy/course/list/';
-
-// 임시로 Params을 고정한다.
-const Map<String, dynamic> readCoursesParams = {'filter_is_recommended': true, 'offset': 0, 'count': 10};
 
 class CourseRepositoryImpl implements CourseRepository {
   final CourseRemoteDataSource remote;
@@ -13,7 +12,22 @@ class CourseRepositoryImpl implements CourseRepository {
   const CourseRepositoryImpl(this.remote);
 
   @override
-  Future<List<Course>> readCourses() async {
-    return await remote.fetch(readCoursesPath, params: readCoursesParams);
+  Future<List<CourseEntity>> readCourses({bool? recommend, int? fetchCount, int? offset}) async {
+    final CourseRequestDto requestDto =
+        CourseRequestDto(recommend: recommend ??= false, count: fetchCount ??= 0, offset: offset ??= 0);
+    final List<Course> courses = await remote.fetch(readCoursesPath, params: requestDto.toJson());
+
+    return courses.fold(<CourseEntity>[], (value, e) async {
+      (await value).add(
+        CourseEntity(
+            title: e.title,
+            id: e.id,
+            shortDescription: e.shortDescription,
+            imageFileUrl: e.imageFileUrl,
+            logoFileUrl: e.logoFileUrl,
+            tagList: e.tagList),
+      );
+      return value;
+    });
   }
 }

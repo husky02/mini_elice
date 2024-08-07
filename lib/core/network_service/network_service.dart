@@ -9,7 +9,7 @@ class NetworkService {
 
   Future<NetworkResponse> getRequest(String path, {Map<String, dynamic>? params}) async {
     Response response = await dio.get(path, queryParameters: params);
-    // Todo: Need transform NetworkResponse()
-    return NetworkResponse(status: 'ok', statusCode: 0, data: null);
+    final Map<String, dynamic>? result = response.data as Map<String, dynamic>?;
+    return NetworkResponse(statusMessage: response.statusMessage ?? '', statusCode: response.statusCode, data: result);
   }
 }

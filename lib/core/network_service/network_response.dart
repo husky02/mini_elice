@@ -1,8 +1,8 @@
 class NetworkResponse {
-  final String status;
+  final String statusMessage;
   final String? reason;
   final int? statusCode;
-  final dynamic data;
+  final Map<String, dynamic>? data;
 
-  NetworkResponse({required this.status, required this.statusCode, this.reason, this.data});
+  NetworkResponse({required this.statusMessage, required this.statusCode, this.reason, this.data});
 }

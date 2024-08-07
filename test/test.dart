@@ -10,7 +10,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mini_elice/core/network_service/network_response.dart';
 import 'package:mini_elice/core/network_service/network_service.dart';
 import 'package:mini_elice/home/data/data_sources/course_remote_data_source.dart';
-import 'package:mini_elice/home/data/models/course_model.dart';
+import 'package:mini_elice/home/data/models/course.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
@@ -47,7 +47,7 @@ void main() {
 
       // then
       expect(
-        result.status,
+        result.statusMessage,
         same(expectedResult[keyStatus]),
       );
 
