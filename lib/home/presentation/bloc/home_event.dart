@@ -6,5 +6,5 @@ class HomeEvent with _$HomeEvent {
 
   factory HomeEvent.fetch({@Default(CourseSectionEnum.free) CourseSectionEnum section}) = CourseFetch;
 
-  factory HomeEvent.sectionItemClicked(CourseEntity entity) = SectionItemClicked;
+  factory HomeEvent.sectionItemClicked(int id) = SectionItemClicked;
 }

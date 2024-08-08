@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:mini_elice/detail/detail_module.dart';
 import 'package:mini_elice/home/domain/entities/course_entity.dart';
 import 'package:mini_elice/home/domain/repositories/course_repository.dart';
 import 'package:mini_elice/home/presentation/course_section_enum.dart';
@@ -17,6 +19,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   HomeBloc(@required this.repository) : super(HomeState.initial()) {
     on<CourseFetch>(fetch);
+    on<SectionItemClicked>(sectionClick);
+  }
+
+  Future<void> sectionClick(SectionItemClicked event, Emitter<HomeState> emit) async {
+    final int id = event.id;
+    Modular.to.pushNamed(DetailModule.name, arguments: id);
   }
 
   Future<void> fetch(CourseFetch event, Emitter<HomeState> emit) async {

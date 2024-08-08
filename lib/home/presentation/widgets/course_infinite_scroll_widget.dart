@@ -71,7 +71,12 @@ class CourseInfiniteScrollWidgetState extends State<CourseInfiniteScrollWidget> 
             itemBuilder: (context, entity, index) {
               return Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: CourseCardWidget(entity),
+                child: CourseCardWidget(entity, (int id) {
+                  final HomeBloc bloc = BlocProvider.of<HomeBloc>(context);
+                  bloc.add(
+                    HomeEvent.sectionItemClicked(id),
+                  );
+                }),
               );
             },
           ),
@@ -89,72 +94,76 @@ class CourseInfiniteScrollWidgetState extends State<CourseInfiniteScrollWidget> 
 
 class CourseCardWidget extends StatelessWidget {
   final CourseEntity entity;
+  final void Function(int) onTapCallback;
 
-  const CourseCardWidget(this.entity, {super.key});
+  const CourseCardWidget(this.entity, this.onTapCallback, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 200.0,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 200.0,
-            height: 100.0,
-            clipBehavior: Clip.hardEdge,
-            decoration: BoxDecoration(
-              color: entity.useLogo ? const Color(0xff3A3A4C) : Colors.white,
-              borderRadius: const BorderRadius.all(
-                Radius.circular(10.0),
-              ),
-            ),
-            child: Center(
-              child: SizedBox(
-                width: entity.imageWidth,
-                height: entity.imageHeight,
-                child: Image.network(entity.imageUrl,
-                    errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
-                  return SizedBox(
-                    width: entity.imageWidth,
-                    height: entity.imageHeight,
-                    child: Assets.png.logoFileUrl.image(),
-                  );
-                }),
-              ),
-            ),
-          ),
-          const SizedBox(height: 8.0),
-          SizedBox(
-            child: Text(
-              entity.title,
-              style: const TextStyle(fontSize: 14.0, fontWeight: FontWeight.w700, color: Colors.black),
-              maxLines: 2,
-            ),
-          ),
-          const SizedBox(height: 2.0),
-          SizedBox(
-            child: Text(
-              entity.shortDescription,
-              style: const TextStyle(fontSize: 10.0, fontWeight: FontWeight.w400, color: Color(0xff242424)),
-              maxLines: 2,
-            ),
-          ),
-          const SizedBox(height: 8.0),
-          SizedBox(
-            height: 36,
-            child: Wrap(
+    return GestureDetector(
+      onTap: () => onTapCallback(entity.id),
+      child: SizedBox(
+        width: 200.0,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: 200.0,
+              height: 100.0,
               clipBehavior: Clip.hardEdge,
-              spacing: 2.0,
-              runSpacing: 4.0,
-              children: entity.tagList
-                  .map(
-                    (e) => TagWidget(e),
-                  )
-                  .toList(),
+              decoration: BoxDecoration(
+                color: entity.useLogo ? const Color(0xff3A3A4C) : Colors.white,
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(10.0),
+                ),
+              ),
+              child: Center(
+                child: SizedBox(
+                  width: entity.imageWidth,
+                  height: entity.imageHeight,
+                  child: Image.network(entity.imageUrl,
+                      errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                    return SizedBox(
+                      width: entity.imageWidth,
+                      height: entity.imageHeight,
+                      child: Assets.png.logoFileUrl.image(),
+                    );
+                  }),
+                ),
+              ),
             ),
-          )
-        ],
+            const SizedBox(height: 8.0),
+            SizedBox(
+              child: Text(
+                entity.title,
+                style: const TextStyle(fontSize: 14.0, fontWeight: FontWeight.w700, color: Colors.black),
+                maxLines: 2,
+              ),
+            ),
+            const SizedBox(height: 2.0),
+            SizedBox(
+              child: Text(
+                entity.shortDescription,
+                style: const TextStyle(fontSize: 10.0, fontWeight: FontWeight.w400, color: Color(0xff242424)),
+                maxLines: 2,
+              ),
+            ),
+            const SizedBox(height: 8.0),
+            SizedBox(
+              height: 36,
+              child: Wrap(
+                clipBehavior: Clip.hardEdge,
+                spacing: 2.0,
+                runSpacing: 4.0,
+                children: entity.tagList
+                    .map(
+                      (e) => TagWidget(e),
+                    )
+                    .toList(),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

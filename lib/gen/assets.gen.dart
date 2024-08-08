@@ -14,6 +14,10 @@ import 'package:flutter/services.dart';
 class $AssetsPngGen {
   const $AssetsPngGen();
 
+  /// File path: assets/png/ic_arrow_back_left.png
+  AssetGenImage get icArrowBackLeft =>
+      const AssetGenImage('assets/png/ic_arrow_back_left.png');
+
   /// File path: assets/png/logo_file_url.png
   AssetGenImage get logoFileUrl =>
       const AssetGenImage('assets/png/logo_file_url.png');
@@ -22,7 +26,7 @@ class $AssetsPngGen {
   AssetGenImage get logoImg => const AssetGenImage('assets/png/logo_img.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [logoFileUrl, logoImg];
+  List<AssetGenImage> get values => [icArrowBackLeft, logoFileUrl, logoImg];
 }
 
 class $AssetsSvgGen {

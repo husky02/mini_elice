@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mini_elice/core/network_service/network_service.dart';
+import 'package:mini_elice/detail/detail_module.dart';
 import 'package:mini_elice/home/data/data_sources/course_remote_data_source.dart';
 import 'package:mini_elice/home/data/repositories/course_repositoryImpl.dart';
 import 'package:mini_elice/home/domain/repositories/course_repository.dart';
@@ -53,6 +54,10 @@ class HomeModule extends Module {
         create: (context) => Modular.get<HomeBloc>(),
         child: const HomePage(),
       ),
+    );
+    r.module(
+      DetailModule.name,
+      module: DetailModule(),
     );
   }
 }
