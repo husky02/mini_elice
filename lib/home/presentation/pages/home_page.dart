@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          // const CourseInfiniteScrollWidget(CourseSectionEnum.myLecture),
+          const CourseInfiniteScrollWidget(CourseSectionEnum.myLecture),
         ]),
       ),
     );
